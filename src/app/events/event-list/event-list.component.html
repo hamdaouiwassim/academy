@@ -1,0 +1,103 @@
+<div class="container p-3 mt-5">
+    <hr />
+    <h2>Liste des evenements </h2>
+    
+ 
+    <hr />
+    <button type="button" class="btn btn-primary" (click)="openModal(addevent)" >Ajouter un evenement</button>
+    <hr />
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            
+            <th scope="col">Nom</th>
+            <th scope="col">Description</th>
+            <th scope="col">Nombre de places </th>
+            <th scope="col">Date d'evenement</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let event of events">
+            
+            <td>{{ event.name }}</td>
+            <td>{{ event.description }}</td>
+            <td>{{ event.placenumber  }}</td>
+            <td>{{ event.eventdate | date }}</td>
+            <td><button class="btn btn-success" style="color:white;" (click)="openModalEdit(Edit,event)"> Modifier </button>   <button class="btn btn-danger" style="color:white;" (click)="openModalDelete(Delete,event._id)" > Supprimer </button> </td>
+          </tr>
+          
+        
+        </tbody>
+</table>
+</div>
+
+<ng-template #addevent>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Ajouter un evenement</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form  method="post">
+      <label for="">Nom</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="event.name"  >
+      <p class="text-danger">{{ errorMsg.name }}</p>
+      
+      <label for="">Description</label>
+      <textarea class="form-control" name="description"  [(ngModel)]="event.description"></textarea>
+      <p class="text-danger">{{ errorMsg.description }}</p>
+      <label for="">Nombre de place </label>
+      <input type="number" class="form-control" name="placenumber" [(ngModel)]="event.placenumber" >
+      <p class="text-danger">{{ errorMsg.placenumber }}</p>
+      <label for="">Date de l'evenement</label>
+      <input type="date" class="form-control" name="eventdate" min="{{ tomorrow | date:'y-LL-dd' }}" [(ngModel)]="event.eventdate" >
+      <p class="text-danger">{{ errorMsg.eventdate }}</p>
+      
+      <button class="btn btn-primary" (click)="onsave()">Save</button>
+    </form>
+  </div>
+</ng-template>
+
+
+
+<ng-template #Edit>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modifier un evenement</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form  method="post">
+      <label for="">Nom</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="editevent.name"  >
+     
+      
+      <label for="">Description</label>
+      <textarea class="form-control" name="description"  [(ngModel)]="editevent.description"></textarea>
+    
+      <label for="">Nombre de place </label>
+      <input type="number" class="form-control" name="placenumber" [(ngModel)]="editevent.placenumber" >
+     
+      <label for="">Date de l'evenement</label>
+      <input type="date" class="form-control" min="{{ tomorrow | date:'y-LL-dd' }}" name="eventdate" [(ngModel)]="editevent.eventdate" >
+      <hr />
+      <button class="btn btn-primary" (click)="onUpdate()">Modifier</button>
+    </form>
+  </div>
+</ng-template>
+<ng-template #Delete>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Supprimer un evenement</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <p>Voulez vous vraiment supprimer cet evenement ?</p>
+      <button class="btn btn-primary" (click)="modalRef.hide()">Non</button>
+      <button class="btn btn-danger" (click)="delete()">Oui</button>
+  </div>
+</ng-template>

@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BooksRoutingModule } from './books-routing.module';
-import { BookListComponent } from './book-list/book-list.component';
+import { EventsRoutingModule } from './events-routing.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {FormsModule } from '@angular/forms';
+import { EventListComponent } from './event-list/event-list.component';
 
 @NgModule({
-  declarations: [BookListComponent],
+  declarations: [EventListComponent],
   imports: [
     CommonModule,
-    BooksRoutingModule,
+    EventsRoutingModule,
     FormsModule,
     ModalModule.forRoot()
   ]
 })
-export class BooksModule { }
+export class EventsModule { }

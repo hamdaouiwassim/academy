@@ -1,32 +1,32 @@
-<div class="container p-3">
+<div class="container p-3 mt-5">
     <hr />
     <h2>Liste des livres </h2>
     
  
     <hr />
     <button type="button" class="btn btn-primary" (click)="openModal(addbook)">Ajouter un livre</button>
+    <hr />
     <table class="table table-bordered">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
+            
+            <th scope="col">Nom</th>
+            <th scope="col">Description</th>
+            <th scope="col">Disponibilite</th>
+            <th scope="col">Date d'ajout</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td><button class="btn btn-success" style="color:white;"> Modifier </button>   <button class="btn btn-danger" style="color:white;"> Supprimer </button> </td>
+          <tr *ngFor="let book of books">
+            
+            <td>{{ book.name }}</td>
+            <td>{{ book.description }}</td>
+            <td>{{ book.disponible && 'Disponible' || 'Non Disponible' }}</td>
+            <td>{{ book.addeddate | date }}</td>
+            <td><button class="btn btn-success" style="color:white;" (click)="openModalEdit(Edit,book)"> Modifier </button>   <button class="btn btn-danger" style="color:white;" (click)="openModalDelete(Delete,book._id)"> Supprimer </button> </td>
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td> <button class="btn btn-success" style="color:white;"> Modifier </button>   <button class="btn btn-danger" style="color:white;"> Supprimer </button> </td>
-          </tr>
+          
        
         </tbody>
       </table>
@@ -40,6 +40,57 @@
       </button>
     </div>
     <div class="modal-body">
-      This is a modal.
+      <form  method="post">
+        <label for="">Nom</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="book.name" >
+        <p class="text-danger">{{ errorMsg.name }}</p>
+        
+        <label for="">Description</label>
+        <textarea class="form-control" name="description" [(ngModel)]="book.description" ></textarea>
+        <p class="text-danger">{{ errorMsg.description }}</p>
+        
+        <button class="btn btn-primary" (click)="onsave()">Save</button>
+      </form>
+    </div>
+  </ng-template>
+
+
+  <ng-template #Edit>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Modifier un livre</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form  method="post">
+        <label for="">Nom</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="editBook.name" >
+        <p class="text-danger">{{ errorMsg.name }}</p>
+        <label for="">Description</label>
+        <textarea class="form-control" name="description" [(ngModel)]="editBook.description" ></textarea>
+        <p class="text-danger">{{ errorMsg.description }}</p>
+        <label for="">Disponibilite</label>
+        <select class="form-control" name="disponible" [(ngModel)]="editBook.disponible" >
+          <option value="true">Disponible</option>
+          <option value="false">Non Disponible</option>
+        </select>
+        <hr />
+        <button class="btn btn-primary" (click)="onUpdate()">Modifier</button>
+      </form>
+    </div>
+  </ng-template>
+
+  <ng-template #Delete>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Supprimer un livre</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <p>Voulez vous vraiment supprimer cet livre ?</p>
+        <button class="btn btn-primary" (click)="modalRef.hide()">Non</button>
+        <button class="btn btn-danger" (click)="delete()">Oui</button>
     </div>
   </ng-template>

@@ -1,0 +1,99 @@
+<div class="container p-3 mt-5">
+    <hr />
+    <h2>Liste des cours </h2>
+    
+ 
+    <hr />
+    <button type="button" class="btn btn-primary" (click)="openModal(addcourse)">Ajouter un cour</button>
+    <hr />
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Description</th>
+            <th scope="col">Auteur</th>
+            <th scope="col">Document</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of courses">
+            
+            <td>{{ course.name }}</td>
+            <td>{{ course.description }}</td>
+            <td>{{ course.auther  }}</td>
+            <td>{{ course.document }}</td>
+            <td><button class="btn btn-success" style="color:white;" (click)="openModalEdit(Edit,course)"> Modifier </button>   <button class="btn btn-danger" style="color:white;" (click)="openModalDelete(Delete,course._id)" > Supprimer </button> </td>
+          </tr>
+          
+        </tbody>
+</table>
+</div>
+
+
+<ng-template #addcourse>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Ajouter un cour</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form  method="post">
+      <label for="">Nom</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="course.name" >
+      <p class="text-danger">{{ errorMsg.name }}</p>
+      
+      <label for="">Description</label>
+      <textarea class="form-control" name="description" [(ngModel)]="course.description" ></textarea>
+      <p class="text-danger">{{ errorMsg.description }}</p>
+      <label for="">Auteur</label>
+      <input type="text" class="form-control" name="auther" [(ngModel)]="course.auther" >
+      <p class="text-danger">{{ errorMsg.auther }}</p>
+      <label for="">Document</label>
+      <input type="file" class="form-control" name="document" [(ngModel)]="course.document" >
+      <p class="text-danger">{{ errorMsg.document }}</p>
+      
+      <button class="btn btn-primary" (click)="onsave()">Save</button>
+    </form>
+  </div>
+</ng-template>
+
+
+<ng-template #Edit>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modifier un cour</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form  method="post">
+      <label for="">Nom</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="editcourse.name" >
+      <p class="text-danger">{{ errorMsg.name }}</p>
+      <label for="">Description</label>
+      <textarea class="form-control" name="description" [(ngModel)]="editcourse.description" ></textarea>
+      <p class="text-danger">{{ errorMsg.description }}</p>
+      <label for="">Auteur</label>
+      <input type="text" class="form-control" name="auther" [(ngModel)]="editcourse.auther" >
+      <label for="">Document</label>
+      <input type="file" class="form-control" name="document" [(ngModel)]="editcourse.document" >
+      <hr />
+      <button class="btn btn-primary" (click)="onUpdate()">Modifier</button>
+    </form>
+  </div>
+</ng-template>
+<ng-template #Delete>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Supprimer un cour</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <p>Voulez vous vraiment supprimer cet cour ?</p>
+      <button class="btn btn-primary" (click)="modalRef.hide()">Non</button>
+      <button class="btn btn-danger" (click)="delete()">Oui</button>
+  </div>
+</ng-template>

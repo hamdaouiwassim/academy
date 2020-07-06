@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   <a class="navbar-brand" routerLink="/">Academy</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,7 +7,29 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/books">Books <span class="sr-only">(current)</span></a>
+        <a class="nav-link" *ngIf="!logged" routerLink="/login">Login <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" *ngIf="!logged" routerLink="/register">Register <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" *ngIf="logged" routerLink="/books">Books <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" *ngIf="logged" routerLink="/events">Events <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" *ngIf="logged" routerLink="/courses">Courses <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" *ngIf="logged" routerLink="/courses">Reservations <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" *ngIf="logged" routerLink="/profile">Liste d'attente <span class="sr-only">(current)</span></a>
+      </li>
+    
+      <li class="nav-item active">
+        <a class="nav-link" *ngIf="logged" routerLink="/profile">Profile <span class="sr-only">(current)</span></a>
       </li>
     
     </ul>
