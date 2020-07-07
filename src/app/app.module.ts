@@ -21,7 +21,7 @@ import { BookListComponent } from './user/books/book-list/book-list.component';
 import { CourseListComponent } from './user/courses/course-list/course-list.component';
 import { ResultatListComponent } from './resultats/resultat-list/resultat-list.component';
 import { QuizComponent } from './quiz/quiz/quiz.component';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -45,7 +45,8 @@ import { QuizComponent } from './quiz/quiz/quiz.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
   providers: [UserService,AuthGuard,{
     provide: HTTP_INTERCEPTORS ,
