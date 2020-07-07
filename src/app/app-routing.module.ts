@@ -5,13 +5,22 @@ import { RegisterComponent } from './auth/register/register.component';
 import {anonguard,adminguard,userguard} from './guard.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AuthGuard } from './auth/auth.guard';
+import { LandingComponent } from './landing/landing.component';
+import { ReservationListComponent } from './reservation/reservation-list/reservation-list.component';
+import { AttenteListComponent } from './attente/attente-list/attente-list.component';
+import { ResultatListComponent } from './resultats/resultat-list/resultat-list.component';
 
 
 const routes: Routes = [
   {
     path : '',
-    redirectTo : '',
+    redirectTo : 'landing',
     pathMatch:'full'
+    },
+    {
+      path : 'landing',
+      component : LandingComponent
+      
     },
     {
       path : 'books',
@@ -44,6 +53,18 @@ const routes: Routes = [
     {
       path : 'profile', component : UserProfileComponent,
       canActivate:[AuthGuard],
+    },
+    {
+      path : 'reservations', component : ReservationListComponent,
+     
+    },
+    {
+      path : 'listeattente', component : AttenteListComponent,
+     
+    },
+    {
+      path : 'resultats', component : ResultatListComponent,
+     
     }
 ];
 

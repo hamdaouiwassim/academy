@@ -22,7 +22,7 @@
             <td>{{ course.name }}</td>
             <td>{{ course.description }}</td>
             <td>{{ course.auther  }}</td>
-            <td>{{ course.document }}</td>
+            <td><a href="{{ course.document }}" class="btn btn-primary">Voir le document</a></td>
             <td><button class="btn btn-success" style="color:white;" (click)="openModalEdit(Edit,course)"> Modifier </button>   <button class="btn btn-danger" style="color:white;" (click)="openModalDelete(Delete,course._id)" > Supprimer </button> </td>
           </tr>
           

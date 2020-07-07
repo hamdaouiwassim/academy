@@ -1,14 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-.btn-primary{
+.btn-unique{
     background-color: #1abc9c !important;
     border-color: #1abc9c;
 }
-.btn-primary:hover,.btn-primary:active,.btn-primary:visited{
+.btn-unique:hover,.btn-unique:active,.btn-unique:visited{
     border-color: #1abc9c54 !important;
 }
-.bg-primary{
+.bg-unique{
     background-color: #1abc9c !important; 
 }
-.text-primary{
+.text-unique{
     border-color: #1abc9c !important; 
 }

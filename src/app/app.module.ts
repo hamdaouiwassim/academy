@@ -13,6 +13,14 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserService } from './shared/user.service';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { LandingComponent } from './landing/landing.component';
+import { AttenteListComponent } from './attente/attente-list/attente-list.component';
+import { ReservationListComponent } from './reservation/reservation-list/reservation-list.component';
+import { EventListComponent } from './user/events/event-list/event-list.component';
+import { BookListComponent } from './user/books/book-list/book-list.component';
+import { CourseListComponent } from './user/courses/course-list/course-list.component';
+import { ResultatListComponent } from './resultats/resultat-list/resultat-list.component';
+
 
 
 @NgModule({
@@ -21,6 +29,13 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     LoginComponent,
     RegisterComponent,
     UserProfileComponent,
+    LandingComponent,
+    AttenteListComponent,
+    ReservationListComponent,
+    EventListComponent,
+    BookListComponent,
+    CourseListComponent,
+    ResultatListComponent,
    
   ],
   imports: [
