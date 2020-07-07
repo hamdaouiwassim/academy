@@ -9,6 +9,7 @@ import { LandingComponent } from './landing/landing.component';
 import { ReservationListComponent } from './reservation/reservation-list/reservation-list.component';
 import { AttenteListComponent } from './attente/attente-list/attente-list.component';
 import { ResultatListComponent } from './resultats/resultat-list/resultat-list.component';
+import { QuizComponent } from './quiz/quiz/quiz.component';
 
 
 const routes: Routes = [
@@ -64,6 +65,10 @@ const routes: Routes = [
     },
     {
       path : 'resultats', component : ResultatListComponent,
+     
+    },
+    {
+      path : 'course/quiz', component : QuizComponent,
      
     }
 ];

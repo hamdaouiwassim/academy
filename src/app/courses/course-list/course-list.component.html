@@ -13,6 +13,7 @@
             <th scope="col">Description</th>
             <th scope="col">Auteur</th>
             <th scope="col">Document</th>
+            <th scope="col">Quiz</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -22,8 +23,10 @@
             <td>{{ course.name }}</td>
             <td>{{ course.description }}</td>
             <td>{{ course.auther  }}</td>
-            <td><a href="{{ course.document }}" class="btn btn-primary">Voir le document</a></td>
-            <td><button class="btn btn-success" style="color:white;" (click)="openModalEdit(Edit,course)"> Modifier </button>   <button class="btn btn-danger" style="color:white;" (click)="openModalDelete(Delete,course._id)" > Supprimer </button> </td>
+            <td><a href="{{ course.document }}" class="btn btn-primary"><i class="fa fa-file" aria-hidden="true"></i></a></td>
+            <td><a routerLink="/course/quiz" class="btn btn-info">Add Quiz</a></td>
+            <td><button class="btn btn-success mr-2" style="color:white;" (click)="openModalEdit(Edit,course)"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                 <button class="btn btn-danger" style="color:white;" (click)="openModalDelete(Delete,course._id)" > <i class="fa fa-trash" aria-hidden="true"></i> </button> </td>
           </tr>
           
         </tbody>

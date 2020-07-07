@@ -2,6 +2,7 @@
 .btn-unique{
     background-color: #1abc9c !important;
     border-color: #1abc9c;
+    color:white;
 }
 .btn-unique:hover,.btn-unique:active,.btn-unique:visited{
     border-color: #1abc9c54 !important;

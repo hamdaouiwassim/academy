@@ -20,6 +20,7 @@ import { EventListComponent } from './user/events/event-list/event-list.componen
 import { BookListComponent } from './user/books/book-list/book-list.component';
 import { CourseListComponent } from './user/courses/course-list/course-list.component';
 import { ResultatListComponent } from './resultats/resultat-list/resultat-list.component';
+import { QuizComponent } from './quiz/quiz/quiz.component';
 
 
 
@@ -36,6 +37,7 @@ import { ResultatListComponent } from './resultats/resultat-list/resultat-list.c
     BookListComponent,
     CourseListComponent,
     ResultatListComponent,
+    QuizComponent,
    
   ],
   imports: [

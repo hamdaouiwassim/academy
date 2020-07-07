@@ -31,12 +31,15 @@
         <a class="nav-link" *ngIf="logged" routerLink="/courses">Courses <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" *ngIf="logged" routerLink="/courses">Reservations <span class="sr-only">(current)</span></a>
+        <a class="nav-link" *ngIf="logged" routerLink="/reservations">Reservations <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" *ngIf="logged" routerLink="/profile">Liste d'attente <span class="sr-only">(current)</span></a>
+        <a class="nav-link" *ngIf="logged" routerLink="/listeattente">
+          Waiting List<span class="sr-only">(current)</span></a>
       </li>
-    
+      <li class="nav-item active">
+        <a class="nav-link" *ngIf="logged" routerLink="/resultats">Results <span class="sr-only">(current)</span></a>
+      </li>
       <li class="nav-item active">
         <a class="nav-link" *ngIf="logged" routerLink="/profile">Profile <span class="sr-only">(current)</span></a>
       </li>
