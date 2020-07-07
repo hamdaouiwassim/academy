@@ -25,18 +25,21 @@ const routes: Routes = [
     },
     {
       path : 'books',
-      canActivate:[userguard],
+      canActivate:[AuthGuard],
+      
       loadChildren:  () => import('./books/books.module').then(m => m.BooksModule)
       
     },
     {
       path : 'events',
-      canActivate:[adminguard],
+      canActivate:[AuthGuard],
+      
       loadChildren:  () => import('./events/events.module').then(m => m.EventsModule)
       
     },
     {
       path : 'courses',
+      canActivate:[AuthGuard],
       loadChildren:  () => import('./courses/courses.module').then(m => m.CoursesModule)
       
     },
@@ -57,18 +60,22 @@ const routes: Routes = [
     },
     {
       path : 'reservations', component : ReservationListComponent,
+      canActivate:[AuthGuard],
      
     },
     {
       path : 'listeattente', component : AttenteListComponent,
+      canActivate:[AuthGuard],
      
     },
     {
       path : 'resultats', component : ResultatListComponent,
+      canActivate:[AuthGuard],
      
     },
     {
       path : 'course/quiz', component : QuizComponent,
+      canActivate:[AuthGuard],
      
     }
 ];

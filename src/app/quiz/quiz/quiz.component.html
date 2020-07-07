@@ -16,11 +16,11 @@
             <tr>
                 <td >What about AI ?</td>
                 <td >
-                    <a href="http://" class="btn btn-secondary mr-2"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                    <a href="http://" class="btn btn-info">Show responces</a>
+                    <button  (click)="openModal(addresponce)" class="btn btn-secondary mr-2"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                    <button (click)="openModal(responces)" href="http://" class="btn btn-info">Show responces</button>
                 </td>
                 <td >
-                    <button class="btn btn-success mr-2" style="color:white;" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                    <button (click)="openModal(editquestion)" class="btn btn-success mr-2" style="color:white;" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                     <button class="btn btn-danger" style="color:white;"  > <i class="fa fa-trash" aria-hidden="true"></i> </button> 
    
                 </td>
@@ -28,11 +28,11 @@
               <tr>
                 <td >Can we use AI to manipulate humain brains ?</td>
                 <td >
-                    <a href="http://" class="btn btn-secondary mr-2"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                    <a href="http://" class="btn btn-info">Show responces</a>
+                    <button  (click)="openModal(addresponce)" class="btn btn-secondary mr-2"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                    <button (click)="openModal(responces)" href="http://" class="btn btn-info">Show responces</button>
                 </td>
                 <td >
-                    <button class="btn btn-success mr-2" style="color:white;" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                    <button (click)="openModal(editquestion)" class="btn btn-success mr-2" style="color:white;" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                     <button class="btn btn-danger" style="color:white;"  > <i class="fa fa-trash" aria-hidden="true"></i> </button> 
    
                 </td>
@@ -40,11 +40,11 @@
               <tr>
                 <td >What about AI ?</td>
                 <td >
-                    <a href="http://" class="btn btn-secondary mr-2"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                    <a href="http://" class="btn btn-info">Show responces</a>
+                    <button  (click)="openModal(addresponce)" class="btn btn-secondary mr-2"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                    <button (click)="openModal(responces)" href="http://" class="btn btn-info">Show responces</button>
                 </td>
                 <td >
-                    <button class="btn btn-success mr-2" style="color:white;" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                    <button (click)="openModal(editquestion)" class="btn btn-success mr-2" style="color:white;" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                     <button class="btn btn-danger" style="color:white;"  > <i class="fa fa-trash" aria-hidden="true"></i> </button> 
    
                 </td>
@@ -52,11 +52,11 @@
               <tr>
                 <td >Can we use AI to manipulate humain brains ?</td>
                 <td >
-                    <a href="http://" class="btn btn-secondary mr-2"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                    <a href="http://" class="btn btn-info">Show responces</a>
+                    <button  (click)="openModal(addresponce)" class="btn btn-secondary mr-2"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                    <button (click)="openModal(responces)" href="http://" class="btn btn-info">Show responces</button>
                 </td>
                 <td >
-                    <button class="btn btn-success mr-2" style="color:white;" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                    <button (click)="openModal(editquestion)" class="btn btn-success mr-2" style="color:white;" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                     <button class="btn btn-danger" style="color:white;"  > <i class="fa fa-trash" aria-hidden="true"></i> </button> 
    
                 </td>
@@ -82,5 +82,84 @@
           
         <button class="btn btn-primary" >Save</button>
       </form>
+    </div>
+  </ng-template>
+
+  <ng-template #editquestion>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Modifier un question</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form  method="post">
+        <label for="">Question</label>
+        <input type="text" class="form-control" name="question"  >
+        <p class="text-danger"></p>
+          
+        <button class="btn btn-primary" >Save</button>
+      </form>
+    </div>
+  </ng-template>
+
+  <ng-template #addresponce>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Ajouter un reponce</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form  method="post">
+        <label for="">responce</label>
+        <input type="text" class="form-control" name="responce"  >
+        <p class="text-danger"></p>
+        <label for="">Right answer</label>
+        <select class="form-control" name="answer"  >
+                <option value="y">Yes</option>
+                <option value="n">No</option>
+        </select>
+        <p class="text-danger"></p>
+        <button class="btn btn-primary" >Save</button>
+      </form>
+    </div>
+  </ng-template>
+
+
+  <ng-template #responces>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left"> Reponces List </h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Responce</th>
+                <th scope="col">Right answer</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td >Question 1 </td>
+                    <td >Yes</td>
+                    <td ><button  class="btn btn-danger">Delete</button></td>
+                </tr>
+                <tr>
+                    <td >Question 2 </td>
+                    <td >No</td>
+                    <td ><button  class="btn btn-danger">Delete</button></td>
+                </tr>
+                <tr>
+                    <td >Question 3 </td>
+                    <td >No</td>
+                    <td ><button  class="btn btn-danger">Delete</button></td>
+                </tr>
+            </tbody>
+    </table>
     </div>
   </ng-template>
