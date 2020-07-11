@@ -124,7 +124,7 @@ app.post('/api/UpdateCourse',function(req,res){
     });
 })
 app.post('/api/DeleteCourse',function(req,res){
-    modelBook.remove({_id:req.body.id},function(err){
+    modelCourses.remove({_id:req.body.id},function(err){
         if(err){
             res.send(err);
         }

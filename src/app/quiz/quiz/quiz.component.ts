@@ -19,46 +19,70 @@ export class QuizComponent implements OnInit {
     idcour :'',
     question:''
   };
+  id = {'id':''};
   constructor(private modalService: BsModalService , private router : ActivatedRoute , private quizService : QuizService  ) { }
  
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
+  openModalEdit(template: TemplateRef<any>,quiz ) {
+    this.modalRef = this.modalService.show(template);
+    this.editquiz  = quiz ;
+  }
+  openModalDelete(template: TemplateRef<any>,id) {
+    this.id.id = id;
+    this.modalRef = this.modalService.show(template);
+    
+  } 
   ngOnInit(): void {
     //console.log(this.router.snapshot.params);
     this.model.idcour = this.router.snapshot.params.id;
-    console.log("oups ==> get all");
-    this.getAllQ();
+    //console.log("oups ==> get all");
+    this.getAllQ(this.router.snapshot.params.id);
     
   }
 
   onSubmit(form : NgForm){
     this.quizService.addQ(form.value).subscribe(
       res => {
-        console.log("cool added");
+        this.getAllQ(this.model.idcour);
+        this.modalRef.hide();
 
       },
       err => {
-        console.log(" why this happen");
       }
     );
   }
 
-  getAllQ(){
+  getAllQ(idcours){
 
-    this.quizService.getAllQuizs().subscribe(
+    this.quizService.getCoursQuiz(idcours).subscribe(
       
       res => {
         this.quizs = res ;
-        console.log("success");
-        console.log(res);
         
       },
       err => {
-        console.log("erreur");
-        console.log(err);
       }
     );
+  }
+
+  onUpdate(){
+    console.log(this.quiz);
+    this.quizService.updateQ(this.editquiz).subscribe(res=>{
+      this.getAllQ(this.model.idcour);
+      this.modalRef.hide()
+        },error=>{
+        });
+    
+  }
+  delete(){
+    this.quizService.removeQ(this.id).subscribe(res=>{
+      this.getAllQ(this.model.idcour);
+      this.modalRef.hide();
+        },error=>{
+        });
+
   }
 
 }
