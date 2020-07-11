@@ -16,8 +16,8 @@
             <tr *ngFor="let quiz of quizs">
                 <td >{{ quiz.question }}</td>
                 <td >
-                    <button  (click)="openModal(addresponce)" class="btn btn-secondary mr-2"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
-                    <button (click)="openModal(responces)" href="http://" class="btn btn-info">Show responces</button>
+                    <button  (click)="openAddRModal(addresponce,quiz._id)" class="btn btn-secondary mr-2"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                    <button (click)="openListRModal(responces,quiz._id)" href="http://" class="btn btn-info">Show responces</button>
                 </td>
                 <td >
                     <button (click)="openModalEdit(editquestion,quiz)" class="btn btn-success mr-2" style="color:white;" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
@@ -86,22 +86,27 @@
 
   <ng-template #addresponce>
     <div class="modal-header">
-      <h4 class="modal-title pull-left">Ajouter un reponce</h4>
+      <h4 class="modal-title pull-left">Ajouter un reponse</h4>
       <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <form  method="post">
+      <form  #addr="ngForm" (ngSubmit)="addr.valid && onAddResponse(addr)">
+        
         <label for="">responce</label>
-        <input type="text" class="form-control" name="responce"  >
+        <input type="text" class="form-control" name="response" #response="ngModel" [(ngModel)]="modelR.response"   >
         <p class="text-danger"></p>
         <label for="">Right answer</label>
-        <select class="form-control" name="answer"  >
-                <option value="y">Yes</option>
-                <option value="n">No</option>
-        </select>
+        <select #state="ngModel" [(ngModel)]="modelR.state" class="form-control" name="state">
+          <option [ngValue]="true">Yes</option>
+          <option [ngValue]="false">No</option>
+      </select>
+      <!--
+        <select class="form-control" ng-options="(item?'Yes':'No') for item in [true, false]" name="state" #state="ngModel" [(ngModel)]="modelR.state"></select>
+        -->
         <p class="text-danger"></p>
+        <input type="hidden" name="idquiz" value="{{ this.idquiz }}" #idquiz="ngModel" [(ngModel)]="modelR.idquiz">
         <button class="btn btn-primary" >Save</button>
       </form>
     </div>
@@ -125,22 +130,31 @@
               </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td >Question 1 </td>
-                    <td >Yes</td>
-                    <td ><button  class="btn btn-danger">Delete</button></td>
+                <tr *ngFor="let response of responses">
+                    <td >{{ response.response }} </td>
+                    <td >
+                      <div *ngIf="response.state; else elseBlock">Yes</div>
+                      <ng-template #elseBlock>No</ng-template>
+                     </td>
+                    <td ><button  class="btn btn-danger" (click)="openModalDeleteR(DeleteR,response._id)" >Delete</button></td>
                 </tr>
-                <tr>
-                    <td >Question 2 </td>
-                    <td >No</td>
-                    <td ><button  class="btn btn-danger">Delete</button></td>
-                </tr>
-                <tr>
-                    <td >Question 3 </td>
-                    <td >No</td>
-                    <td ><button  class="btn btn-danger">Delete</button></td>
-                </tr>
+               
             </tbody>
     </table>
+    </div>
+  </ng-template>
+
+
+  <ng-template #DeleteR>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Supprimer un response</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <p>Voulez vous vraiment supprimer cet response ?</p>
+        <button class="btn btn-primary" (click)="modalRef.hide()">Non</button>
+        <button class="btn btn-danger" (click)="deleteR()">Oui</button>
     </div>
   </ng-template>

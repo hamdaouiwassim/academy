@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { QuizService } from 'src/app/shared/quiz/quiz.service';
 import { Quiz } from 'src/app/shared/quiz/quiz.model';
+import { ResponseService } from 'src/app/shared/response/response.service';
 
 @Component({
   selector: 'app-quiz',
@@ -12,6 +13,8 @@ import { Quiz } from 'src/app/shared/quiz/quiz.model';
 })
 export class QuizComponent implements OnInit {
   modalRef: BsModalRef;
+
+  /** Quiz */
   quiz : Quiz = new Quiz();
   quizs :any;
   editquiz : any;
@@ -20,7 +23,18 @@ export class QuizComponent implements OnInit {
     question:''
   };
   id = {'id':''};
-  constructor(private modalService: BsModalService , private router : ActivatedRoute , private quizService : QuizService  ) { }
+  /** responses */
+  response : Response = new Response();
+  responses :any;
+  editresponse : any;
+  modelR  = {
+    idquiz :'',
+    response:'',
+    state : false
+  };
+  idq = {'id':''};
+
+  constructor(private modalService: BsModalService , private responseService : ResponseService ,private router : ActivatedRoute , private quizService : QuizService  ) { }
  
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -31,6 +45,25 @@ export class QuizComponent implements OnInit {
   }
   openModalDelete(template: TemplateRef<any>,id) {
     this.id.id = id;
+    this.modalRef = this.modalService.show(template);
+    
+  } 
+
+  /** response */
+  openAddRModal(template: TemplateRef<any>,idquiz){
+    this.modelR.idquiz = idquiz;
+    //this.getAllR(idquiz);
+    console.log(this.modelR);
+    this.modalRef = this.modalService.show(template);
+  }
+  openListRModal(template: TemplateRef<any>,idquiz){
+    this.idq.id = idquiz;
+    this.getAllR(idquiz);
+    this.modalRef = this.modalService.show(template);
+  }
+  openModalDeleteR(template: TemplateRef<any>,id) {
+    this.idq.id = id;
+    
     this.modalRef = this.modalService.show(template);
     
   } 
@@ -46,6 +79,7 @@ export class QuizComponent implements OnInit {
     this.quizService.addQ(form.value).subscribe(
       res => {
         this.getAllQ(this.model.idcour);
+  //      this.resetModel();
         this.modalRef.hide();
 
       },
@@ -71,6 +105,7 @@ export class QuizComponent implements OnInit {
     console.log(this.quiz);
     this.quizService.updateQ(this.editquiz).subscribe(res=>{
       this.getAllQ(this.model.idcour);
+//      this.resetModel();
       this.modalRef.hide()
         },error=>{
         });
@@ -84,5 +119,51 @@ export class QuizComponent implements OnInit {
         });
 
   }
+
+  /** Responses */
+  getAllR(idquiz){
+    this.responseService.getQuizsResponses(idquiz).subscribe(
+      
+      res => {
+        this.responses = res ;
+        
+      },
+      err => {
+      }
+    );
+  }
+  onAddResponse(form : NgForm){
+    this.responseService.addR(form.value).subscribe(
+      res => {
+        console.log("here we go");
+        //this.getAllR(this.model.idcour);
+        //form.reset();
+        this.resetModelR();
+        
+        this.modalRef.hide();
+
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+  deleteR(){
+    this.responseService.removeR(this.idq).subscribe(res=>{
+     //this.getAllR(this.router.snapshot.params.id);
+      this.modalRef.hide();
+        },error=>{
+        });
+  }
+
+
+    resetModelR(){
+      this.modelR = {
+        idquiz : '', 
+        response:'',
+        state : false
+      };
+    }
+
 
 }
