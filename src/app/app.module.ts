@@ -22,6 +22,8 @@ import { CourseListComponent } from './user/courses/course-list/course-list.comp
 import { ResultatListComponent } from './resultats/resultat-list/resultat-list.component';
 import { QuizComponent } from './quiz/quiz/quiz.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ResultComponent } from './user/results/result/result.component';
+import { ReservationComponent } from './user/reservations/reservation/reservation.component';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     CourseListComponent,
     ResultatListComponent,
     QuizComponent,
+    ResultComponent,
+    ReservationComponent,
    
   ],
   imports: [

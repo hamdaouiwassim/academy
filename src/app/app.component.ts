@@ -9,6 +9,7 @@ import { UserService } from 'src/app/shared/user.service';
 export class AppComponent {
   logged = false;
   title = 'frontend';
+  role = true;
   constructor(public userService: UserService) { }
   ngOnInit(): void {
     if(this.userService.isLoggedIn())

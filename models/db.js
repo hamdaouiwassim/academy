@@ -6,3 +6,4 @@ var db = mongo.connect("mongodb://localhost:27017/academy",function(err,response
 });
 
 require("./user.model");
+require("./quiz.model");

@@ -13,8 +13,8 @@
           </tr>
         </thead>
         <tbody>
-            <tr>
-                <td >What about AI ?</td>
+            <tr *ngFor="let quiz of quizs">
+                <td >{{ quiz.question }}</td>
                 <td >
                     <button  (click)="openModal(addresponce)" class="btn btn-secondary mr-2"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
                     <button (click)="openModal(responces)" href="http://" class="btn btn-info">Show responces</button>
@@ -25,42 +25,9 @@
    
                 </td>
               </tr>
-              <tr>
-                <td >Can we use AI to manipulate humain brains ?</td>
-                <td >
-                    <button  (click)="openModal(addresponce)" class="btn btn-secondary mr-2"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
-                    <button (click)="openModal(responces)" href="http://" class="btn btn-info">Show responces</button>
-                </td>
-                <td >
-                    <button (click)="openModal(editquestion)" class="btn btn-success mr-2" style="color:white;" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                    <button class="btn btn-danger" style="color:white;"  > <i class="fa fa-trash" aria-hidden="true"></i> </button> 
-   
-                </td>
-              </tr>
-              <tr>
-                <td >What about AI ?</td>
-                <td >
-                    <button  (click)="openModal(addresponce)" class="btn btn-secondary mr-2"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
-                    <button (click)="openModal(responces)" href="http://" class="btn btn-info">Show responces</button>
-                </td>
-                <td >
-                    <button (click)="openModal(editquestion)" class="btn btn-success mr-2" style="color:white;" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                    <button class="btn btn-danger" style="color:white;"  > <i class="fa fa-trash" aria-hidden="true"></i> </button> 
-   
-                </td>
-              </tr>
-              <tr>
-                <td >Can we use AI to manipulate humain brains ?</td>
-                <td >
-                    <button  (click)="openModal(addresponce)" class="btn btn-secondary mr-2"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
-                    <button (click)="openModal(responces)" href="http://" class="btn btn-info">Show responces</button>
-                </td>
-                <td >
-                    <button (click)="openModal(editquestion)" class="btn btn-success mr-2" style="color:white;" > <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                    <button class="btn btn-danger" style="color:white;"  > <i class="fa fa-trash" aria-hidden="true"></i> </button> 
-   
-                </td>
-              </tr>
+              
+              
+              
         </tbody>
     </table>
 </div>
@@ -75,11 +42,11 @@
       </button>
     </div>
     <div class="modal-body">
-      <form  method="post">
+      <form  #addq="ngForm" (ngSubmit)="addq.valid && onSubmit(addq)">
         <label for="">Question</label>
-        <input type="text" class="form-control" name="question"  >
+        <input type="text" class="form-control" name="question" #question="ngModel" [(ngModel)]="model.question"  >
         <p class="text-danger"></p>
-          
+          <input type="hidden" name="idcour" value="{{ this.idcour }}" #idcour="ngModel" [(ngModel)]="model.idcour">
         <button class="btn btn-primary" >Save</button>
       </form>
     </div>
@@ -93,12 +60,12 @@
       </button>
     </div>
     <div class="modal-body">
-      <form  method="post">
+      <form  >
         <label for="">Question</label>
-        <input type="text" class="form-control" name="question"  >
+        <input type="text" class="form-control" name="question" #question="ngModel" [(ngModel)]="model.question" >
         <p class="text-danger"></p>
           
-        <button class="btn btn-primary" >Save</button>
+        <button class="btn btn-primary" >Modifier</button>
       </form>
     </div>
   </ng-template>

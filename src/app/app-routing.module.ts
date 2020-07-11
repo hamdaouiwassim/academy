@@ -10,6 +10,11 @@ import { ReservationListComponent } from './reservation/reservation-list/reserva
 import { AttenteListComponent } from './attente/attente-list/attente-list.component';
 import { ResultatListComponent } from './resultats/resultat-list/resultat-list.component';
 import { QuizComponent } from './quiz/quiz/quiz.component';
+import { BookListComponent } from './user/books/book-list/book-list.component';
+import { EventListComponent } from './user/events/event-list/event-list.component';
+import { CourseListComponent } from './user/courses/course-list/course-list.component';
+import { ReservationComponent } from './user/reservations/reservation/reservation.component';
+import { ResultComponent } from './user/results/result/result.component';
 
 
 const routes: Routes = [
@@ -74,7 +79,32 @@ const routes: Routes = [
      
     },
     {
-      path : 'course/quiz', component : QuizComponent,
+      path : 'course/:id/quiz', component : QuizComponent,
+      canActivate:[AuthGuard],
+     
+    },
+    {
+      path : 'me/books', component : BookListComponent,
+      canActivate:[AuthGuard],
+     
+    },
+    {
+      path : 'me/events', component : EventListComponent,
+      canActivate:[AuthGuard],
+     
+    },
+    {
+      path : 'me/courses', component : CourseListComponent,
+      canActivate:[AuthGuard],
+     
+    },
+    {
+      path : 'me/reservations', component : ReservationComponent,
+      canActivate:[AuthGuard],
+     
+    },
+    {
+      path : 'me/results', component : ResultComponent,
       canActivate:[AuthGuard],
      
     }
