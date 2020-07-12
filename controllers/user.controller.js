@@ -8,12 +8,13 @@ module.exports.register = (req,res,next)=>{
     user.fullname = req.body.fullname;
     user.email = req.body.email;
     user.password = req.body.password;
+    user.role = "user";
     user.save((err,doc)=>{
         if(!err)
             res.send(doc);
         else{
             if (err.code == 11000)
-                res.status(422).send(['Email existe deja']);
+                res.status(422).send(['Email existe deja'] );
             else
                 return next(err);
         }
@@ -30,7 +31,7 @@ module.exports.authenticate = (req, res, next) => {
         // error from passport middleware
         if (err) return res.status(404).json(err);
         // registered user
-        if (user) return res.status(200).json({ "token": user.generateJwt() });
+        if (user) return res.status(200).json({ "token": user.generateJwt() , 'user': user });
         // unknown user or wrong password
         else return res.status(401).json(info);
     })(req, res);
@@ -42,7 +43,7 @@ module.exports.userProfile = (req, res, next) =>{
             if (!user)
                 return res.status(404).json({ status: false, message: 'utilisateur non trouve.' });
             else
-                return res.status(200).json({ status: true, user : _.pick(user,['fullname','email']) });
+                return res.status(200).json({ status: true, user : _.pick(user,['_id','fullname','email']) });
         }
     );
 }

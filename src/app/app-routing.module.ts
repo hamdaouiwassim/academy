@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import {anonguard,adminguard,userguard} from './guard.service';
+import {AnonGuard, UserGuard, AdminGuard } from './guard.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AuthGuard } from './auth/auth.guard';
 import { LandingComponent } from './landing/landing.component';
@@ -15,98 +15,103 @@ import { EventListComponent } from './user/events/event-list/event-list.componen
 import { CourseListComponent } from './user/courses/course-list/course-list.component';
 import { ReservationComponent } from './user/reservations/reservation/reservation.component';
 import { ResultComponent } from './user/results/result/result.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 
 
 const routes: Routes = [
-  {
-    path : '',
-    redirectTo : 'landing',
-    pathMatch:'full'
+  
+    {
+      path: '',
+      redirectTo: 'landing',
+      pathMatch: 'full'
     },
     {
-      path : 'landing',
-      component : LandingComponent
-      
+      path: 'landing',
+      component: LandingComponent
+  
     },
     {
-      path : 'books',
-      canActivate:[AuthGuard],
-      
-      loadChildren:  () => import('./books/books.module').then(m => m.BooksModule)
-      
+      path: 'login', component: LoginComponent,
+      canActivate: [AnonGuard],
+  
     },
     {
-      path : 'events',
-      canActivate:[AuthGuard],
-      
-      loadChildren:  () => import('./events/events.module').then(m => m.EventsModule)
-      
+      path: 'register', component: RegisterComponent,
+      canActivate: [AnonGuard],
     },
     {
-      path : 'courses',
-      canActivate:[AuthGuard],
-      loadChildren:  () => import('./courses/courses.module').then(m => m.CoursesModule)
-      
+      path: 'books',
+      canActivate: [AdminGuard],
+  
+      loadChildren: () => import('./books/books.module').then(m => m.BooksModule)
+  
     },
     {
-      path : 'login', component : LoginComponent  ,
-      canActivate:[anonguard],
-        
-         
+      path: 'events',
+      canActivate: [AdminGuard],
+  
+      loadChildren: () => import('./events/events.module').then(m => m.EventsModule)
+  
     },
     {
-      path : 'register', component : RegisterComponent,
-      canActivate:[anonguard],
-    }
-    ,
-    {
-      path : 'profile', component : UserProfileComponent,
-      canActivate:[AuthGuard],
+      path: 'courses',
+      canActivate: [AdminGuard],
+      loadChildren: () => import('./courses/courses.module').then(m => m.CoursesModule)
+  
     },
     {
-      path : 'reservations', component : ReservationListComponent,
-      canActivate:[AuthGuard],
-     
+      path: 'reservations', component: ReservationListComponent,
+      canActivate: [AdminGuard],
+  
     },
     {
-      path : 'listeattente', component : AttenteListComponent,
-      canActivate:[AuthGuard],
-     
+      path: 'listeattente', component: AttenteListComponent,
+      canActivate: [AdminGuard],
+  
     },
     {
-      path : 'resultats', component : ResultatListComponent,
-      canActivate:[AuthGuard],
-     
+      path: 'resultats', component: ResultatListComponent,
+      canActivate: [AdminGuard],
+  
+    },
+    
+    {
+      path: 'profile', component: AdminProfileComponent,
+      canActivate: [AdminGuard],
     },
     {
-      path : 'course/:id/quiz', component : QuizComponent,
-      canActivate:[AuthGuard],
-     
+      path: 'my/profile', component: UserProfileComponent,
+      canActivate: [UserGuard],
     },
     {
-      path : 'me/books', component : BookListComponent,
-      canActivate:[AuthGuard],
-     
+      path: 'course/:id/quiz', component: QuizComponent,
+      canActivate: [AdminGuard],
+  
     },
     {
-      path : 'me/events', component : EventListComponent,
-      canActivate:[AuthGuard],
-     
+      path: 'me/books', component: BookListComponent,
+      canActivate: [UserGuard],
+  
     },
     {
-      path : 'me/courses', component : CourseListComponent,
-      canActivate:[AuthGuard],
-     
+      path: 'me/events', component: EventListComponent,
+      canActivate: [UserGuard],
+  
     },
     {
-      path : 'me/reservations', component : ReservationComponent,
-      canActivate:[AuthGuard],
-     
+      path: 'me/courses', component: CourseListComponent,
+      canActivate: [UserGuard],
+  
     },
     {
-      path : 'me/results', component : ResultComponent,
-      canActivate:[AuthGuard],
-     
+      path: 'me/reservations', component: ReservationComponent,
+      canActivate: [UserGuard],
+  
+    },
+    {
+      path: 'me/results', component: ResultComponent,
+      canActivate: [UserGuard],
+  
     }
 ];
 

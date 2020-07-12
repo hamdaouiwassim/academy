@@ -19,6 +19,9 @@ export class EventService {
   update(data){
    return this.http.post(this.baseUrl + '/api/UpdateEvent',data);
  }
+ updateNumPlace(data){
+  return this.http.post(this.baseUrl + '/api/UpdateEventPlace',data);
+  }
  delete(id){
    return this.http.post(this.baseUrl + '/api/DeleteEvent',id);
  }

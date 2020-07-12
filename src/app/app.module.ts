@@ -24,6 +24,7 @@ import { QuizComponent } from './quiz/quiz/quiz.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ResultComponent } from './user/results/result/result.component';
 import { ReservationComponent } from './user/reservations/reservation/reservation.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { ReservationComponent } from './user/reservations/reservation/reservatio
     QuizComponent,
     ResultComponent,
     ReservationComponent,
+    AdminProfileComponent,
    
   ],
   imports: [

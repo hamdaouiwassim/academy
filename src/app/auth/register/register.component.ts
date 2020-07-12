@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/user.service';
 import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
-import { adminguard } from 'src/app/guard.service';
+
 
 @Component({
   selector: 'app-register',
@@ -17,8 +17,7 @@ export class RegisterComponent implements OnInit {
   constructor(public userService: UserService,private router : Router) { }
 
   ngOnInit(): void {
-    if(this.userService.isLoggedIn())
-      this.router.navigateByUrl('/profile');
+    
   }
   onSubmit(form : NgForm){
      this.userService.postUser(form.value).subscribe(
@@ -43,10 +42,13 @@ export class RegisterComponent implements OnInit {
     this.userService.selectedUser = {
       fullname : '',
       email : '',
-      password : ''
+      password : '',
+      role:''
     };
     form.resetForm();
     this.serverErrorMessage = '';
+    this.router.navigate(['me/books']);
+    window.location.reload();
 
   }
 

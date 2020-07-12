@@ -66,6 +66,19 @@ app.post('/api/UpdateBook',function(req,res){
     });
 })
 
+app.post('/api/UpdateBookDisponible',function(req,res){
+    var mod = new modelBook(req.body);
+    modelBook.findByIdAndUpdate(req.body._id,{ disponible : req.body.disponible },function(err,data){
+        if(err){
+            res.send(err);
+        }
+        else{
+            //res.send({data:"livre modifiee avec succes .. !"})
+        }
+
+    });
+})
+
 app.post('/api/DeleteBook',function(req,res){
     modelBook.remove({_id:req.body.id},function(err){
         if(err){
@@ -194,6 +207,20 @@ app.post('/api/UpdateEvent',function(req,res){
 
     });
 })
+
+app.post('/api/UpdateEventPlace',function(req,res){
+    var mod = new modelBook(req.body);
+    modelEvents.findByIdAndUpdate(req.body._id,{ placenumber : req.body.placenumber },function(err,data){
+        if(err){
+            res.send(err);
+        }
+        else{
+            //res.send({data:"livre modifiee avec succes .. !"})
+        }
+
+    });
+})
+
 
 app.get("/api/getevents",function(req,res){
     modelEvents.find({},function(err,data){

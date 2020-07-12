@@ -1,143 +1,57 @@
+
+<nav  class="navbar navbar-expand-lg navbar-dark bg-unique fixed-top">
+  <a class="navbar-brand" routerLink="/"><img src="assets/Academyw.png" width="40"> Academy </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      
+   
+      <li class="nav-item active">
+        <a class="nav-link"  routerLink="/me/books">Books <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link"  routerLink="/me/events">Events <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link"  routerLink="/me/courses">Courses <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link"  routerLink="/me/reservations">Mes Reservations <span class="sr-only">(current)</span></a>
+      </li>
+ 
+      <li class="nav-item active">
+        <a class="nav-link"  routerLink="/me/results">My Results <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link"  routerLink="/my/profile">Profile <span class="sr-only">(current)</span></a>
+      </li>
+    
+    </ul>
+    
+  </div>
+</nav>
 <div class="container p-5 mt-5">
     <div class="row col-12">
-        <div class="col-4 p-2">
+      <div *ngIf="message" class="col-12 alert alert-success"> {{ message }} </div>
+        <div class="col-4 p-2" *ngFor="let event of events">
 
             <div class="card">
                 <div class="card-header">
                   Event
                 </div>
                 <div class="card-body">
-                  <h5 class="card-title">Artificial Intelligence</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <h5 class="card-title">{{ event.name }}</h5>
+                  <p class="card-text">{{ event.name }}</p>
                     <span> <i class="fa fa-calendar" aria-hidden="true"></i> 12/12/2020</span><br /><hr />
-                  <a href="#" class="btn btn-unique"> <i class="fa fa-cart-plus" aria-hidden="true"></i> reserve</a>
+                  <button class="btn btn-unique" (click)="reserveEvent(event._id,event.placenumber)"> <i class="fa fa-cart-plus" aria-hidden="true"></i> reserve</button>
                 </div>
               </div>
     
-        </div>
-        <div class="col-4 p-2">
-
-            <div class="card">
-                <div class="card-header">
-                  Event
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Artificial Intelligence</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <span> <i class="fa fa-calendar" aria-hidden="true"></i> 12/12/2020</span><br /><hr />
-                  <a href="#" class="btn btn-unique"> <i class="fa fa-cart-plus" aria-hidden="true"></i> reserve</a>
-                </div>
-              </div>
-    
-        </div>
-        <div class="col-4 p-2">
-
-            <div class="card">
-                <div class="card-header">
-                  Event
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Artificial Intelligence</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <span> <i class="fa fa-calendar" aria-hidden="true"></i> 12/12/2020</span><br /><hr />
-                  <a href="#" class="btn btn-unique"> <i class="fa fa-cart-plus" aria-hidden="true"></i> reserve</a>
-                </div>
-              </div>
-    
-        </div>
-        <div class="col-4 p-2">
-
-            <div class="card">
-                <div class="card-header">
-                  Event
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Artificial Intelligence</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <span> <i class="fa fa-calendar" aria-hidden="true"></i> 12/12/2020</span><br /><hr />
-                
-                  <a href="#" class="btn btn-unique"> <i class="fa fa-cart-plus" aria-hidden="true"></i> reserve</a>
-                </div>
-              </div>
-    
-        </div>
-        <div class="col-4 p-2">
-
-            <div class="card">
-                <div class="card-header">
-                  Event
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Artificial Intelligence</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <span> <i class="fa fa-calendar" aria-hidden="true"></i> 12/12/2020</span><br /><hr />
-                  <a href="#" class="btn btn-unique"> <i class="fa fa-cart-plus" aria-hidden="true"></i> reserve</a>
-                </div>
-              </div>
-    
-        </div>
-        <div class="col-4 p-2">
-
-            <div class="card">
-                <div class="card-header">
-                  Event
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Artificial Intelligence</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <span> <i class="fa fa-calendar" aria-hidden="true"></i> 12/12/2020</span><br /><hr />
-                  <a href="#" class="btn btn-unique"> <i class="fa fa-cart-plus" aria-hidden="true"></i> reserve</a>
-                </div>
-              </div>
-    
-        </div>
-        <div class="col-4 p-2">
-
-            <div class="card">
-                <div class="card-header">
-                  Book
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Artificial Intelligence</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <span> <i class="fa fa-calendar" aria-hidden="true"></i> 12/12/2020</span><br /><hr />
-                  <a href="#" class="btn btn-unique"> <i class="fa fa-cart-plus" aria-hidden="true"></i> reserve</a>
-                </div>
-              </div>
-    
-        </div>
-        <div class="col-4 p-2">
-
-            <div class="card">
-                <div class="card-header">
-                  Book
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Artificial Intelligence</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <span> <i class="fa fa-calendar" aria-hidden="true"></i> 12/12/2020</span><br /><hr />
-                  <a href="#" class="btn btn-unique"> <i class="fa fa-cart-plus" aria-hidden="true"></i> reserve</a>
-                </div>
-              </div>
-    
-        </div>
-        <div class="col-4 p-2">
-
-            <div class="card">
-                <div class="card-header">
-                  Book
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Artificial Intelligence</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <span> <i class="fa fa-calendar" aria-hidden="true"></i> 12/12/2020</span><br /><hr />
-                  <a href="#" class="btn btn-unique"> <i class="fa fa-cart-plus" aria-hidden="true"></i> reserve</a>
-                </div>
-              </div>
-    
-        </div>
-        
-    </div>
+        </div>      
+     </div>
 
 </div>
 

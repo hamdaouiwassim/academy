@@ -11,7 +11,8 @@ var userSchema = new mongo.Schema({
     password : { type : String,
         required : "le mot de passe ne peut pas etre vide",
         minlength : [8,"8 caracteres aux minimum pour le mot de passe"]},
-    saltsecret : { type : String }
+    saltsecret : { type : String },
+    role : { type : String }
 
 });
 // custom validation email
