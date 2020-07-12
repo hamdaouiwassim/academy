@@ -9,6 +9,7 @@ import { LandingComponent } from './landing/landing.component';
 import { ReservationListComponent } from './reservation/reservation-list/reservation-list.component';
 import { AttenteListComponent } from './attente/attente-list/attente-list.component';
 import { ResultatListComponent } from './resultats/resultat-list/resultat-list.component';
+import { QuizuComponent } from './user/quiz/quiz/quiz.component';
 import { QuizComponent } from './quiz/quiz/quiz.component';
 import { BookListComponent } from './user/books/book-list/book-list.component';
 import { EventListComponent } from './user/events/event-list/event-list.component';
@@ -112,7 +113,12 @@ const routes: Routes = [
       path: 'me/results', component: ResultComponent,
       canActivate: [UserGuard],
   
+    },{
+      path: 'me/course/:id/quiz', component: QuizuComponent,
+      canActivate: [UserGuard],
+  
     }
+
 ];
 
 @NgModule({

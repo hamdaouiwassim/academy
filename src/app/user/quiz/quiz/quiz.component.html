@@ -1,0 +1,64 @@
+
+<nav  class="navbar navbar-expand-lg navbar-dark bg-unique fixed-top">
+    <a class="navbar-brand" routerLink="/"><img src="assets/Academyw.png" width="40"> Academy </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        
+     
+        <li class="nav-item active">
+          <a class="nav-link"  routerLink="/me/books">Books <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link"  routerLink="/me/events">Events <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link"  routerLink="/me/courses">Courses <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link"  routerLink="/me/reservations">Mes Reservations <span class="sr-only">(current)</span></a>
+        </li>
+   
+        <li class="nav-item active">
+          <a class="nav-link"  routerLink="/me/results">My Results <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link"  routerLink="/my/profile">Profile <span class="sr-only">(current)</span></a>
+        </li>
+      
+      </ul>
+      
+    </div>
+  </nav>
+  <div class="container row p-5 mt-5">
+    <div *ngIf="message != ''" class="col-12 alert alert-warning">{{ message }}</div>
+    <div class="col-4 p-2" *ngFor="let quiz of quizs">
+
+      <div class="card">
+          <div class="card-header">
+           Quiz
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ quiz.question }}</h5>
+            <hr />
+            <p  *ngFor="let reponse of quiz.reponses">
+              {{reponse.response}}
+              <input type="checkbox" name="" id="">
+
+            </p>
+
+          </div>
+          
+        </div>
+       
+  </div>
+  <div class="col-12">
+    <button (click)="submitq()" class="btn-lg btn btn-primary"> Valider  </button> 
+  </div>
+ 
+</div>
+  
+ 

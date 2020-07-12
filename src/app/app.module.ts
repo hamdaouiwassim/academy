@@ -21,6 +21,7 @@ import { BookListComponent } from './user/books/book-list/book-list.component';
 import { CourseListComponent } from './user/courses/course-list/course-list.component';
 import { ResultatListComponent } from './resultats/resultat-list/resultat-list.component';
 import { QuizComponent } from './quiz/quiz/quiz.component';
+import { QuizuComponent } from './user/quiz/quiz/quiz.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ResultComponent } from './user/results/result/result.component';
 import { ReservationComponent } from './user/reservations/reservation/reservation.component';
@@ -41,6 +42,7 @@ import { AdminProfileComponent } from './admin-profile/admin-profile.component';
     CourseListComponent,
     ResultatListComponent,
     QuizComponent,
+    QuizuComponent,
     ResultComponent,
     ReservationComponent,
     AdminProfileComponent,
