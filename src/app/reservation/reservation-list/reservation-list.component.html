@@ -60,45 +60,33 @@
                     
                     <th scope="col">Nom</th>
                     <th scope="col">Book</th>
-                    <th scope="col">Reservation date</th>
                     <th scope="col">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr >
+                  <tr *ngFor="let reserveB of reservebooks">
                     
-                    <td>Ahmed Hlali</td>
-                    <td>AI</td>
-                    <td>12/12/2019</td>
+                    <td>
+                      <div *ngFor="let user of users">
+                        <span *ngIf="user._id == reserveB.iduser">
+                          {{ user.fullname }}
+                        </span>
+
+                      </div>
+                      
+                    </td>
+                    <td>
+                      <div *ngFor="let book of books">
+                      <span *ngIf="book._id == reserveB.idbook">
+                        {{ book.name }}
+                      </span>
+
+                    </div> </td>
                     
-                    <td><a href="" class="btn btn-info">Undone Reservation</a></td>
-                  </tr>
-                  <tr >
-                    
-                    <td>Asma Mrabet</td>
-                    <td>Algorithme</td>
-                    <td>12/12/2020</td>
-                    
-                    <td><a href="" class="btn btn-info">Undone Reservation</a></td>
-                  </tr>
-                  <tr >
-                    
-                    <td>Ahmed Hlali</td>
-                    <td>AI</td>
-                    <td>12/12/2019</td>
-                    
-                    <td><a href="" class="btn btn-info">Undone Reservation</a></td>
-                  </tr>
-                  <tr >
-                    
-                    <td>Asma Mrabet</td>
-                    <td>Algorithme</td>
-                    <td>12/12/2020</td>
                     
                     <td><a href="" class="btn btn-info">Undone Reservation</a></td>
                   </tr>
                   
-               
                 </tbody>
               </table>
                 
@@ -114,45 +102,49 @@
                     <th scope="col">Nom</th>
                     <th scope="col">Event</th>
                     <th scope="col">Number of places available</th>
-                    <th scope="col">Reservation date</th>
+                 
                     
                   </tr>
                 </thead>
                 <tbody>
                   <tr >
                     
-                    <td>Ahmed Hlali</td>
-                    <td>AI : Explaination </td>
-                    <td>10 people</td>
-                    <td>12/12/2020</td>
+                    <tr *ngFor="let reserveE of reserveevents">
                     
-                  </tr>
-                  <tr >
+                      <td>
+                        <div *ngFor="let user of users">
+                          <span *ngIf="user._id == reserveE.iduser">
+                            {{ user.fullname }}
+                          </span>
+  
+                        </div>
+                        
+                      </td>
+                      <td>
+                        <div *ngFor="let event of events">
+                        <span *ngIf="event._id == reserveE.idevent">
+                          {{ event.name }}
+                        </span>
+  
+                      </div> 
+                    </td>
+                      
+                      
+                      <td>
+                        <div *ngFor="let event of events">
+                          <span *ngIf="event._id == reserveE.idevent">
+                            {{ event.placenumber }} people
+                          </span>
+    
+                        </div> 
+
+
+                      </td>
+                    </tr>
                     
-                    <td>Asma Mrabet</td>
-                    <td>Algorithme</td>
-                    <td>20 people</td>
-                    <td>12/12/2020</td>
                     
-                  </tr>
-                  <tr >
                     
-                    <td>Ahmed Hlali</td>
-                    <td>AI : Explaination </td>
-                    <td>10 people</td>
-                    <td>12/12/2020</td>
-                    
-                  </tr>
-                  <tr >
-                    
-                    <td>Asma Mrabet</td>
-                    <td>Algorithme</td>
-                    <td>20 people</td>
-                    <td>12/12/2020</td>
-                    
-                  </tr>
                   
-               
                 </tbody>
               </table>
         </div>
