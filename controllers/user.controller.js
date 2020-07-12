@@ -47,3 +47,16 @@ module.exports.userProfile = (req, res, next) =>{
         }
     );
 }
+
+
+module.exports.getallusers = (req, res, next) =>{
+    User.find({},function(err,data){
+        if(err){  
+          res.send(err);
+        }
+        else{
+            res.send(data);
+        }
+        
+})
+}

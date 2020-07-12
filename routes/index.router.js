@@ -13,6 +13,7 @@ const ctrListeAttenteEvent = require("../controllers/attenteevent.controller");
 
 router.post('/register',ctrUser.register);
 router.post('/authenticate', ctrUser.authenticate);
+router.get('/getallusers', ctrUser.getallusers);
 router.get('/userProfile',jwtHelper.verifyJwtToken, ctrUser.userProfile);
 /** Quiz  */
 router.post('/addquiz',ctrQuiz.addQuiz);

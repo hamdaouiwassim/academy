@@ -75,6 +75,9 @@ export class UserService {
     else
       return false;*/
   }
+  getallusers(){
+    return this.http.get('http://localhost:8080/api/getallusers');
+  }
 }
 
 

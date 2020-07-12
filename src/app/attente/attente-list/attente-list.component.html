@@ -65,34 +65,24 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr >
+                  <tr *ngFor="let attenteB of attentebooks">
                     
-                    <td>Ahmed Hlali</td>
-                    <td>AI</td>
-                    
-                    
-                    <td><a href="" class="btn btn-info">Validate Reservation</a></td>
-                  </tr>
-                  <tr >
-                    
-                    <td>Asma Mrabet</td>
-                    <td>Algorithme</td>
-                    
-                    
-                    <td><a href="" class="btn btn-info">Validate Reservation</a></td>
-                  </tr>
-                  <tr >
-                    
-                    <td>Ahmed Hlali</td>
-                    <td>AI</td>
-                    
-                    
-                    <td><a href="" class="btn btn-info">Validate Reservation</a></td>
-                  </tr>
-                  <tr >
-                    
-                    <td>Asma Mrabet</td>
-                    <td>Algorithme</td>
+                    <td>
+                      <div *ngFor="let user of users">
+                        <span *ngIf="user._id == attenteB.iduser">
+                          {{ user.fullname }}
+                        </span>
+
+                      </div>
+                      
+                    </td>
+                    <td>
+                      <div *ngFor="let book of books">
+                      <span *ngIf="book._id == attenteB.idbook">
+                        {{ book.name }}
+                      </span>
+
+                    </div> </td>
                     
                     
                     <td><a href="" class="btn btn-info">Validate Reservation</a></td>
@@ -119,37 +109,28 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr >
+                  <tr *ngFor="let attenteE of attenteevents">
                     
-                    <td>Ahmed Hlali</td>
-                    <td>AI : Explaination </td>
+                    <td>
+                      <div *ngFor="let user of users">
+                        <span *ngIf="user._id == attenteE.iduser">
+                          {{ user.fullname }}
+                        </span>
+
+                      </div>
+                      
+                    </td>
+                    <td>
+                      <div *ngFor="let event of events">
+                      <span *ngIf="event._id == attenteE.idevent">
+                        {{ event.name }}
+                      </span>
+
+                    </div> </td>
                     <td><a href="" class="btn btn-info">Validate Reservation</a></td>
                    
                     
                   </tr>
-                  <tr >
-                    
-                    <td>Asma Mrabet</td>
-                    <td>Algorithme</td>
-                    <td><a href="" class="btn btn-info">Validate Reservation</a></td>
-                    
-                  </tr>
-                  <tr >
-                    
-                    <td>Ahmed Hlali</td>
-                    <td>AI : Explaination </td>
-                    <td><a href="" class="btn btn-info">Validate Reservation</a></td>
-                    
-                  </tr>
-                  <tr >
-                    
-                    <td>Asma Mrabet</td>
-                    <td>Algorithme</td>
-                    <td><a href="" class="btn btn-info">Validate Reservation</a></td>
-                    
-                  </tr>
-                  
-               
                 </tbody>
               </table>
         </div>
